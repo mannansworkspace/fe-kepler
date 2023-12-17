@@ -1,7 +1,11 @@
+
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 
 function App() {
+  // const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,7 +22,7 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </div >
   );
 }
 
