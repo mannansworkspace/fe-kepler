@@ -20,11 +20,12 @@
 
 /* different option share same query type e.g. events,
 and segments both use queryRunner */
-import keyMirror from 'keymirror';
+import keyMirror from "keymirror";
 
-export const ASSETS_URL = 'https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/';
-export const DATA_URL = 'https://raw.githubusercontent.com/uber-web/kepler.gl-data/master/';
-export const MAP_URI = 'demo/map?mapUrl=';
+export const ASSETS_URL = "https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/";
+export const DATA_URL =
+  "https://raw.githubusercontent.com/uber-web/kepler.gl-data/master/";
+export const MAP_URI = "demo/map?mapUrl=";
 /*
  * If you want to add more samples, feel free to edit the json file on github kepler.gl data repo
  */
@@ -35,35 +36,41 @@ export const MAP_CONFIG_URL = `${DATA_URL}samples.json?nocache=${new Date().getT
  * because it belongs to the demo app
  * @type {string}
  */
-export const KEPLER_GL_WEBSITE = 'http://kepler.gl/';
+export const KEPLER_GL_WEBSITE = "http://kepler.gl/";
 
 export const QUERY_TYPES = keyMirror({
   file: null,
-  sample: null
+  sample: null,
 });
 
 export const QUERY_OPTIONS = keyMirror({
   csv: null,
-  geojson: null
+  geojson: null,
 });
 
 export const LOADING_METHODS = keyMirror({
   remote: null,
-  sample: null
+  sample: null,
 });
 
-export const LOADING_SAMPLE_LIST_ERROR_MESSAGE = 'Not able to load sample gallery';
-export const LOADING_SAMPLE_ERROR_MESSAGE = 'Not able to load sample';
-export const CORS_LINK = 'https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS';
+export const LOADING_SAMPLE_LIST_ERROR_MESSAGE =
+  "Not able to load sample gallery";
+export const LOADING_SAMPLE_ERROR_MESSAGE = "Not able to load sample";
+export const CORS_LINK =
+  "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS";
 
 export const DEFAULT_FEATURE_FLAGS = {
-  cloudStorage: true
+  cloudStorage: true,
 };
 
 export const CLOUD_PROVIDERS_CONFIGURATION = {
   MAPBOX_TOKEN: process.env.REACT_APP_MAPBOX_TOKEN, // eslint-disable-line
-  MERGE_STACK_PROVIDER_DOMAIN: process.env.REACT_APP_MERGE_STACK_PROVIDER_DOMAIN,
-  MERGE_STACK_PROVIDER_CLIENT_ID: process.env.REACT_APP_MERGE_STACK_PROVIDER_CLIENT_ID,
-  MERGE_STACK_PROVIDER_API_URL: process.env.REACT_APP_MERGE_STACK_PROVIDER_API_URL,
-  MERGE_STACK_PROVIDER_REDIRECT_URI: process.env.REACT_APP_MERGE_STACK_PROVIDER_REDIRECT_URI
+  CUSTOM_CLOUD_PROVIDER_DOMAIN:
+    process.env.REACT_APP_CUSTOM_CLOUD_PROVIDER_DOMAIN,
+  CUSTOM_CLOUD_PROVIDER_CLIENT_ID:
+    process.env.REACT_APP_CUSTOM_CLOUD_PROVIDER_CLIENT_ID,
+  CUSTOM_CLOUD_PROVIDER_API_URL:
+    process.env.REACT_APP_CUSTOM_CLOUD_PROVIDER_API_URL,
+  CUSTOM_CLOUD_PROVIDER_REDIRECT_URI:
+    process.env.REACT_APP_CUSTOM_CLOUD_PROVIDER_REDIRECT_URI,
 };

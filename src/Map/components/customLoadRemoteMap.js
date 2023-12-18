@@ -19,26 +19,25 @@
 // THE SOFTWARE.
 
 // TODO: this will move onto kepler.gl core
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
-import { Button } from 'kepler.gl/components';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { FormattedMessage } from "react-intl";
+import { Button } from "kepler.gl/components";
 
 const propTypes = {
-    onLoadRemoteMap: PropTypes.func.isRequired
+  onLoadRemoteMap: PropTypes.func.isRequired,
 };
-
 
 const InputForm = styled.div`
   flex-grow: 1;
   padding: 32px;
-  background-color: ${props => props.theme.panelBackgroundLT};
+  background-color: ${(props) => props.theme.panelBackgroundLT};
 `;
 
 export const StyledInputLabel = styled.div`
   font-size: 11px;
-  color: ${props => props.theme.textColorLT};
+  color: ${(props) => props.theme.textColorLT};
   letter-spacing: 0.2px;
   ul {
     padding-left: 12px;
@@ -54,47 +53,50 @@ export const StyledErrorDescription = styled.div`
 `;
 
 const Error = ({ error, url }) => (
-    <StyledError>
-        <StyledErrorDescription>{url}</StyledErrorDescription>
-        <StyledErrorDescription>{error.message}</StyledErrorDescription>
-    </StyledError>
+  <StyledError>
+    <StyledErrorDescription>{url}</StyledErrorDescription>
+    <StyledErrorDescription>{error.message}</StyledErrorDescription>
+  </StyledError>
 );
 
-const API_URL = `${process.env.REACT_APP_MERGE_STACK_PROVIDER_API_URL}/map.json`
+const API_URL = `${process.env.REACT_APP_CUSTOM_CLOUD_PROVIDER_API_URL}/map.json`;
 
 class LoadRemoteMap extends Component {
-    state = {
-        dataUrl: API_URL,
-        error: null,
-        submitted: false
-    };
+  state = {
+    dataUrl: API_URL,
+    error: null,
+    submitted: false,
+  };
 
-    onLoadRemoteMap = () => {
-        const { dataUrl, error } = this.state;
+  onLoadRemoteMap = () => {
+    const { dataUrl, error } = this.state;
 
-        this.setState({ submitted: true });
+    this.setState({ submitted: true });
 
-        if (!dataUrl || error) {
-            return;
-        }
-
-        this.props.onLoadRemoteMap({ dataUrl });
-    };
-
-    render() {
-        const displayedError = this.props.error || this.state.submitted ? this.state.error : null;
-
-        return (
-            <div>
-                <InputForm>
-                    <Button type="submit" cta size="small" onClick={this.onLoadRemoteMap}>
-                        <FormattedMessage id={'Load local Map.json'} />
-                    </Button>
-                    {displayedError && <Error error={displayedError} url={this.props.option?.dataUrl} />}
-                </InputForm>
-            </div>
-        );
+    if (!dataUrl || error) {
+      return;
     }
+
+    this.props.onLoadRemoteMap({ dataUrl });
+  };
+
+  render() {
+    const displayedError =
+      this.props.error || this.state.submitted ? this.state.error : null;
+
+    return (
+      <div>
+        <InputForm>
+          <Button type="submit" cta size="small" onClick={this.onLoadRemoteMap}>
+            <FormattedMessage id={"Load local Map.json"} />
+          </Button>
+          {displayedError && (
+            <Error error={displayedError} url={this.props.option?.dataUrl} />
+          )}
+        </InputForm>
+      </div>
+    );
+  }
 }
 
 LoadRemoteMap.propTypes = propTypes;

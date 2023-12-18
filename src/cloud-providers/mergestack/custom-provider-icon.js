@@ -18,26 +18,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, { Component } from 'react';
-import { Icons } from 'kepler.gl/components';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { Icons } from "kepler.gl/components";
+import PropTypes from "prop-types";
 
-class MergestackIcon extends Component {
+class CustomProviderIcon extends Component {
   static propTypes = {
     /** Set the height of the icon, ex. '16px' */
     height: PropTypes.string,
-    colors: PropTypes.arrayOf(PropTypes.string)
+    colors: PropTypes.arrayOf(PropTypes.string),
   };
 
   static defaultProps = {
-    height: '16px',
-    predefinedClassName: 'data-ex-icons-dropbox',
-    totalColor: 1
+    height: "16px",
+    predefinedClassName: "data-ex-icons-dropbox",
+    totalColor: 1,
   };
 
   render() {
     return (
-      <Icons.IconWrapper {...this.props} viewBox={'0 0 416 416'} colors={['#0060ff']}>
+      <Icons.IconWrapper
+        {...this.props}
+        viewBox={"0 0 416 416"}
+        colors={["#0060ff"]}
+      >
         <path
           className="cr1"
           d="M348.911,169.42L220.258,91.062l81.133-67.164l128.732,79.217L348.911,169.42z M300.532,317.532
@@ -50,4 +54,4 @@ class MergestackIcon extends Component {
   }
 }
 
-export default MergestackIcon;
+export default CustomProviderIcon;

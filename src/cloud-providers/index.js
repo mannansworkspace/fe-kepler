@@ -18,38 +18,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import { CLOUD_PROVIDERS_CONFIGURATION } from '../constants/default-settings';
+import { CLOUD_PROVIDERS_CONFIGURATION } from "../constants/default-settings";
+import CustomCloudProvider from "./mergestack/custom-provider";
 
 // import DropboxProvider from './dropbox/dropbox-provider';
 // import FoursquareProvider from './foursquare/foursquare-provider';
-import MergeStackProvider from './mergestack/mergestack-provider';
-
 
 const {
-  MERGE_STACK_PROVIDER_CLIENT_ID,
-  MERGE_STACK_PROVIDER_DOMAIN,
-  MERGE_STACK_PROVIDER_API_URL,
-  MERGE_STACK_PROVIDER_REDIRECT_URI
+  CUSTOM_CLOUD_PROVIDER_CLIENT_ID,
+  CUSTOM_CLOUD_PROVIDER_DOMAIN,
+  CUSTOM_CLOUD_PROVIDER_API_URL,
+  CUSTOM_CLOUD_PROVIDER_REDIRECT_URI,
 } = CLOUD_PROVIDERS_CONFIGURATION;
 
 // const DROPBOX_CLIENT_NAME = 'Kepler.gl-FE-training';
 
-export const DEFAULT_CLOUD_PROVIDER = 'dropbox';
+export const DEFAULT_CLOUD_PROVIDER = "dropbox";
 
 export const CLOUD_PROVIDERS = [
-  // new DropboxProvider('w63l3yjgqhxmux8', 'Kepler-test-app'),
-  new MergeStackProvider(
-    MERGE_STACK_PROVIDER_DOMAIN,
-    MERGE_STACK_PROVIDER_CLIENT_ID,
-    MERGE_STACK_PROVIDER_API_URL,
-    MERGE_STACK_PROVIDER_REDIRECT_URI
+  new CustomCloudProvider(
+    CUSTOM_CLOUD_PROVIDER_DOMAIN,
+    CUSTOM_CLOUD_PROVIDER_CLIENT_ID,
+    CUSTOM_CLOUD_PROVIDER_API_URL,
+    CUSTOM_CLOUD_PROVIDER_REDIRECT_URI
   ),
-
 ];
 
 export function getCloudProvider(providerName) {
-  console.log("getting vloud provider")
-  const cloudProvider = CLOUD_PROVIDERS.find(provider => provider.name === providerName);
+  console.log("getting vloud provider");
+  const cloudProvider = CLOUD_PROVIDERS.find(
+    (provider) => provider.name === providerName
+  );
   if (!cloudProvider) {
     throw new Error(`Unknown cloud provider ${providerName}`);
   }
